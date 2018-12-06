@@ -796,7 +796,8 @@ class IntlTelInputApp extends Component {
   clickSelectedFlag() {
     if (!this.state.showDropdown &&
         !this.state.disabled &&
-        !this.state.readonly) {
+        !this.state.readonly &&
+        this.props.allowDropdown) {
       this.setState({
         showDropdown: true,
         offsetTop: utils.offset(this.tel).top,
@@ -809,6 +810,7 @@ class IntlTelInputApp extends Component {
         }
       });
     }
+    this.props.onFlagClick();
   }
 
   // update the input placeholder to an
@@ -1233,6 +1235,7 @@ IntlTelInputApp.propTypes = {
   onPhoneNumberChange: PropTypes.func,
   onPhoneNumberBlur: PropTypes.func,
   onSelectFlag: PropTypes.func,
+  onFlagClick: PropTypes.func,
   disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
@@ -1284,6 +1287,7 @@ IntlTelInputApp.defaultProps = {
   onPhoneNumberChange: null,
   onPhoneNumberBlur: null,
   onSelectFlag: null,
+  onFlagClick: () => {},
   disabled: false,
   autoFocus: false,
   // whether to use fullscreen flag dropdown for mobile useragents
