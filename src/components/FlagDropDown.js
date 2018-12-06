@@ -43,7 +43,7 @@ class FlagDropDown extends Component {
               ref={ (countryList) => { this.countryList = countryList; } }
               dropdownContainer={ this.props.dropdownContainer }
               isMobile={ this.props.isMobile }
-              showDropdown={ this.props.showDropdown }
+              showDropdown={ this.props.allowDropdown && this.props.showDropdown }
               setFlag={ this.props.setFlag }
               countries={ this.props.countries }
               inputTop={ this.props.inputTop }
