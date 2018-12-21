@@ -186,6 +186,7 @@ class IntlTelInputApp extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.value !== prevProps.value) {
       this.updateFlagFromNumber(this.props.value);
+      this.updateCursorPosition((this.props.value || this.props.defaultValue).length);
     }
 
     if (
@@ -762,6 +763,12 @@ class IntlTelInputApp extends Component {
     if (countryCode !== null) {
       this.setFlag(countryCode, isInit);
     }
+  }
+
+  updateCursorPosition = (cursorPosition) => {
+    this.setState({
+      cursorPosition,
+    });
   }
 
   // check if the given number contains an unknown area code from
